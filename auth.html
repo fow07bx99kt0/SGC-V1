@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Auth — SGC</title>
+  <script type="module" src="https://unpkg.com/@microsoft/mgt@4/dist/bundle/mgt-auth.js"></script>
+</head>
+<body>
+  <mgt-msal2-login></mgt-msal2-login>
+  <script>
+    // this page is only used as a popup for MSAL. It can stay minimal.
+    window.onload = () => console.log('Auth popup ready');
+  </script>
+</body>
+</html>

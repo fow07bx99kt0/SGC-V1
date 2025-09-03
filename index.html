@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGC — Sistema de Gestão do Conhecimento</title>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Teams SDK v2 -->
+  <script src="https://res.cdn.office.net/teams-js/2.21.0/js/MicrosoftTeams.min.js" defer></script>
+
+  <!-- Microsoft Graph Toolkit (global 'mgt') -->
+  <script type="module" src="https://unpkg.com/@microsoft/mgt@4/dist/bundle/mgt-loader.js"></script>
+
+  <style>
+    html, body { height: 100%; background: #f6f8f9; }
+    .card { transition: transform .12s ease, box-shadow .12s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0,0,0,.08); }
+    .brand { background: linear-gradient(135deg, #1e8552, #20a36a); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div id="app" class="mx-auto max-w-6xl p-4 md:p-8">
+    <!-- Header -->
+    <header class="flex items-center justify-between bg-white rounded-2xl shadow-sm p-4 md:p-6 mb-6">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-2xl brand flex items-center justify-center text-white font-bold">SGC</div>
+        <div>
+          <h1 class="text-xl md:text-2xl font-semibold text-gray-800">Sistema de Gestão do Conhecimento</h1>
+          <p class="text-gray-500 text-sm md:text-base">Navegue pelos artefatos corporativos em um hub enxuto e padronizado.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="modeDirect" class="px-3 py-2 rounded-xl text-sm font-medium bg-gray-900 text-white">Modo Links</button>
+        <button id="modeGraph" class="px-3 py-2 rounded-xl text-sm font-medium bg-white border">Modo Embedded (Graph)</button>
+      </div>
+    </header>
+
+    <!-- Back Button -->
+    <div class="mb-4">
+      <button id="btnBack" class="hidden text-sm px-4 py-2 rounded-xl border bg-white hover:bg-gray-50">← Voltar</button>
+    </div>
+
+    <!-- Grid -->
+    <section id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <!-- Cards injected by app.js -->
+    </section>
+
+    <!-- Panel -->
+    <section id="panel" class="hidden bg-white rounded-2xl shadow-sm p-4 md:p-6">
+      <div id="panelTitle" class="text-lg md:text-xl font-semibold text-gray-800 mb-4">Documentos</div>
+      <div id="panelContent"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-10 text-xs text-gray-500 text-center">
+      v1.0 • SGC — Hub corporativo de conhecimento • Powered by Teams + Graph
+    </footer>
+  </div>
+
+  <!-- App JS (externo para evitar CSP bloquear inline scripts) -->
+  <script src="./app.js" defer></script>
+</body>
+</html>
