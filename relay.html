@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>SGC – Seção</title>
+<link href="style.css" rel="stylesheet"/>
+<style>
+    .relay { max-width: 980px; margin: 0 auto; padding: 24px; }
+    .relay h2 { margin: 0 0 8px 0; }
+    .actions { display: flex; gap: 12px; margin-top: 12px; }
+    .btn { padding: 10px 16px; border-radius: 12px; border: none; cursor: pointer; }
+    .btn-primary { background: #16a34a; color: #fff; }
+    .btn-secondary { background: #e5e7eb; color: #111827; }
+    .hint { margin-top: 12px; font-size: 14px; color: #4b5563; }
+    .back { display:inline-block; margin-bottom:12px; text-decoration:none; padding:8px 12px; border-radius:12px; background:#e5e7eb; color:#111827; }
+  </style>
+</head>
+<body><nav class="topmenu" id="topmenu"><a href="index.html">Home</a><a href="relay.html?name=Engenharia&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F02.%2520DOCUMENTAL%2520DE%2520PROCESSOS%2FENGENHARIA%3Fcsf%3D1%26web%3D1%26e%3Dfod9OS">Engenharia</a><a href="relay.html?name=Backoffice&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F02.%2520DOCUMENTAL%2520DE%2520PROCESSOS%2FBACKOFFICE%3Fcsf%3D1%26web%3D1%26e%3Dqhb4eD">Backoffice</a><a href="relay.html?name=Neg%C3%B3cios&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F02.%2520DOCUMENTAL%2520DE%2520PROCESSOS%2FNEG%25C3%2593CIOS%3Fcsf%3D1%26web%3D1%26e%3Dt8F36m">Negócios</a><a href="relay.html?name=Pol%C3%ADticas&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fs%2FCorpal%2FEj2irJ5cZqVFnucS0ZdM2k4BMUkrfA9-CzDxzu7Y-uPedA%3Fe%3DfH9YTW">Políticas</a><a href="relay.html?name=Manuais&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F03.%2520MANUAIS%3Fcsf%3D1%26web%3D1%26e%3DTmbzig">Manuais</a><a href="relay.html?name=Modelo%20de%20Documentos&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F04.%2520MODELOS%2520E%2520LOGOS%3Fcsf%3D1%26web%3D1%26e%3DwJ8hCy">Modelo de Documentos</a><a href="relay.html?name=Treinamentos&amp;target=https%3A%2F%2Fcorpalloteamentos.sharepoint.com%2F%3Af%3A%2Fr%2Fsites%2FCorpal%2FProcessos%2FGEST%25C3%2583O%2520DE%2520CONHECIMENTO%2F05.%2520TREINAMENTOS%3Fcsf%3D1%26web%3D1%26e%3DYHGeLL">Treinamentos</a></nav>
+<div class="relay">
+<a class="back" href="index.html">← Voltar</a>
+<h2 id="sectTitle">Seção</h2>
+<p id="sectInfo">Abrindo documentos da seção…</p>
+<div class="actions">
+<button class="btn btn-primary" id="btnOpen">Abrir documentos</button>
+</div>
+<p class="hint">Se abrir em nova janela, continue dentro do Teams.</p>
+</div>
+<script>
+    let params = new URLSearchParams(window.location.search);
+    let name = params.get('name') || 'Seção';
+    let target = params.get('target');
+    try { target = decodeURIComponent(target); } catch(e){}
+    try { target = decodeURIComponent(target); } catch(e){}
+
+    document.getElementById('sectTitle').innerText = name;
+    document.title = 'SGC — ' + name;
+
+    function openDocs() {
+      if (!target) return;
+      try { window.location.assign(target); }
+      catch(e) { try { window.open(target, '_blank'); } catch(e2){} }
+    }
+    document.getElementById('btnOpen').addEventListener('click', openDocs);
+    setTimeout(openDocs, 400);
+  </script>
+</body>
+</html>
